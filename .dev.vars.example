@@ -1,0 +1,9 @@
+# Copy this file to `.dev.vars` for local `wrangler dev` to pick up secrets.
+# For production, push the same values with `wrangler secret put <NAME>` — do
+# not put secrets in wrangler.toml.
+#
+# Non-secret vars (AZURE_SPEECH_REGION, GOOGLE_CLOUD_PROJECT, etc.) live in
+# wrangler.toml [vars] and are also applied to local dev automatically.
+
+AZURE_SPEECH_KEY=your-azure-speech-key
+GOOGLE_SERVICE_ACCOUNT_JSON={"type":"service_account","project_id":"...","private_key":"...","client_email":"..."}

@@ -1,0 +1,336 @@
+@import 'tailwindcss';
+@import 'reveal.js/dist/reveal.css';
+/*
+ * Skip reveal.js's theme/white.css — it contains a late `@import` for the
+ * source-sans-pro font which violates CSS spec and triggers PostCSS warnings.
+ * We provide our own typography (Georgia / Noto Serif TC) below.
+ */
+
+/*
+ * Design Guideline
+ * - Base font size: 16px (text-sm)
+ * - Minimum font size: 14px (text-xs)
+ * All other scales shift up accordingly.
+ */
+@theme {
+  --text-xs: 14px;
+  --text-xs--line-height: 1.5;
+  --text-sm: 16px;
+  --text-sm--line-height: 1.55;
+  --text-base: 18px;
+  --text-base--line-height: 1.6;
+  --text-lg: 20px;
+  --text-lg--line-height: 1.5;
+  --text-xl: 24px;
+  --text-xl--line-height: 1.4;
+  --text-2xl: 30px;
+  --text-2xl--line-height: 1.3;
+  --text-3xl: 36px;
+  --text-3xl--line-height: 1.25;
+}
+
+:root {
+  --wuti-ink: #1a1a1a;
+  --wuti-cream: #faf8f3;
+  --wuti-accent: #a85d00;
+  font-size: 16px;
+}
+
+/* Minimal reveal.js theme replacement (was: theme/white.css) */
+.reveal {
+  background: var(--wuti-cream);
+  color: var(--wuti-ink);
+}
+.reveal .progress {
+  color: var(--wuti-ink);
+}
+.reveal .controls {
+  color: var(--wuti-ink);
+}
+.reveal .slide-number {
+  color: var(--wuti-ink);
+  background: transparent;
+  font-size: 14px;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--wuti-cream);
+  color: var(--wuti-ink);
+  font-family: Georgia, 'Noto Serif TC', 'Songti TC', serif;
+}
+
+.reveal .slides section {
+  text-align: left;
+  font-family: Georgia, 'Noto Serif TC', 'Songti TC', serif;
+  max-height: 100%;
+  overflow-y: auto;
+  box-sizing: border-box;
+  padding: 2em 3em;
+  color: var(--wuti-ink);
+}
+
+.reveal .slides section.wuti-cover {
+  overflow: visible;
+  padding: 4em 5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.reveal .slides section.wuti-cover .wuti-title {
+  font-size: 68px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  border: none;
+  padding: 0;
+  margin: 0 0 0.4em 0;
+  line-height: 1.15;
+}
+
+/*
+ * Professional slide typography (1280x720 canvas).
+ * Title ~44px · body ~30px · tables/code ~22px · min 20px.
+ */
+.wuti-title {
+  font-size: 44px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  margin: 0 0 0.6em 0;
+  padding-bottom: 0.35em;
+  border-bottom: 1px solid #1a1a1a;
+  line-height: 1.25;
+}
+.wuti-body {
+  font-size: 30px;
+  line-height: 1.55;
+}
+.wuti-body small,
+.wuti-body sub,
+.wuti-body sup {
+  font-size: 20px;
+}
+.wuti-body h3 {
+  font-size: 32px;
+  font-weight: 600;
+  margin: 0.8em 0 0.4em;
+}
+.wuti-body h4 {
+  font-size: 26px;
+  font-weight: 600;
+  margin: 0.7em 0 0.3em;
+}
+.wuti-body p {
+  margin: 0.6em 0;
+}
+.wuti-body ul,
+.wuti-body ol {
+  margin: 0.6em 0;
+  padding-left: 1.4em;
+}
+.wuti-body li {
+  margin-bottom: 0.4em;
+}
+.wuti-body blockquote {
+  border-left: 3px solid #1a1a1a;
+  padding: 0.2em 0 0.2em 1em;
+  margin: 0.8em 0;
+  color: #555;
+  font-style: italic;
+  box-shadow: none;
+}
+.wuti-body strong {
+  color: #1a1a1a;
+}
+.wuti-body a {
+  color: var(--wuti-accent);
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3 {
+  font-family: Georgia, 'Noto Serif TC', serif;
+  text-transform: none;
+  letter-spacing: 0.01em;
+  color: var(--wuti-ink);
+}
+
+.reveal h2 {
+  font-size: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+/* Tables: never overflow horizontally, wrap long cells */
+.wuti-body table {
+  width: 100% !important;
+  max-width: 100%;
+  table-layout: auto;
+  border-collapse: collapse;
+  font-size: 22px;
+  line-height: 1.45;
+  margin: 0.6em 0;
+}
+.wuti-body table th,
+.wuti-body table td {
+  border-bottom: 1px solid #ddd;
+  padding: 0.55em 0.75em;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+  vertical-align: top;
+  text-align: left;
+}
+.wuti-body table thead th {
+  border-bottom: 2px solid var(--wuti-ink);
+  font-weight: 600;
+  background: transparent;
+}
+
+/* Hide reveal's default max-width on images so tables/blocks stretch full */
+.reveal .slides section img {
+  max-width: 100%;
+}
+
+.reveal .accent {
+  color: var(--wuti-accent);
+}
+
+.reveal pre,
+.wuti-body pre {
+  font-size: 22px;
+  box-shadow: none;
+  border: 1px solid #e5e1d6;
+  white-space: pre-wrap;
+  word-break: break-word;
+  padding: 0.7em 1em;
+  background: rgba(0, 0, 0, 0.03);
+  line-height: 1.45;
+}
+.wuti-body code {
+  font-size: 0.92em;
+  background: rgba(0, 0, 0, 0.05);
+  padding: 0.1em 0.35em;
+  border-radius: 3px;
+}
+.wuti-body pre code {
+  background: transparent;
+  padding: 0;
+}
+
+/* Fade scrollbar for clean look */
+.reveal .slides section::-webkit-scrollbar {
+  width: 6px;
+}
+.reveal .slides section::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 3px;
+}
+
+.wuti-shell {
+  height: 100vh;
+  background: var(--wuti-cream);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Custom elements need explicit display so flex layout works on them. */
+wuti-player {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  min-height: 0;
+}
+wuti-editor {
+  display: block;
+  flex-shrink: 0;
+  max-height: 38vh;
+  overflow-y: auto;
+}
+
+/* Mobile block: this app is desktop-only. */
+.wuti-mobile-only {
+  display: none;
+}
+@media (max-width: 767px) {
+  .wuti-mobile-only {
+    display: flex;
+    min-height: 100vh;
+    background: var(--wuti-cream);
+    color: var(--wuti-ink);
+    align-items: center;
+    justify-content: center;
+    padding: 6vh 7vw;
+    box-sizing: border-box;
+  }
+  .wuti-shell {
+    display: none !important;
+  }
+}
+.wuti-mobile-card {
+  max-width: 480px;
+}
+.wuti-mobile-brand {
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #6b6960;
+  margin: 0 0 1.75rem;
+  font-family: Menlo, ui-monospace, monospace;
+}
+.wuti-mobile-card h1 {
+  font-size: 30px;
+  font-weight: 400;
+  margin: 0 0 1.1rem;
+  line-height: 1.2;
+}
+.wuti-mobile-card p {
+  font-size: 15px;
+  line-height: 1.65;
+  margin: 0 0 1rem;
+  color: #3d3a31;
+}
+.wuti-mobile-card em {
+  font-style: italic;
+}
+.wuti-mobile-footer {
+  font-family: Menlo, ui-monospace, monospace;
+  font-size: 12px !important;
+  color: #6b6960 !important;
+  margin-top: 1.75rem !important;
+}
+
+/* Interactive elements get the hand cursor. */
+button:not(:disabled),
+summary,
+[role='button'] {
+  cursor: pointer;
+}
+
+/* Styled tooltip: set data-tip="text" on any element to show on hover/focus. */
+[data-tip] {
+  position: relative;
+}
+[data-tip]:hover::after,
+[data-tip]:focus-visible::after {
+  content: attr(data-tip);
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--wuti-ink);
+  color: var(--wuti-cream);
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  line-height: 1.4;
+  font-family: Menlo, ui-monospace, monospace;
+  width: max-content;
+  max-width: 240px;
+  text-align: center;
+  white-space: normal;
+  pointer-events: none;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+}

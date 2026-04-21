@@ -1,0 +1,36 @@
+#:schema node_modules/wrangler/config-schema.json
+# Copy this file to `wrangler.toml` and fill in your own values.
+# `wrangler.toml` is gitignored so your personal routes/buckets stay local.
+
+name = "wuti-presentation"
+main = "server/worker.ts"
+compatibility_date = "2025-04-15"
+compatibility_flags = ["nodejs_compat"]
+workers_dev = true
+
+# Custom domain routing. Delete this block if you only use workers.dev.
+[[routes]]
+pattern = "your-domain.example.com/*"
+zone_name = "example.com"
+
+[[r2_buckets]]
+binding = "WUTI_STORAGE"
+bucket_name = "your-r2-bucket-name"
+
+[assets]
+directory = "./dist"
+binding = "ASSETS"
+not_found_handling = "single-page-application"
+run_worker_first = true
+
+# Non-secret vars. Secrets (AZURE_SPEECH_KEY, GOOGLE_SERVICE_ACCOUNT_JSON)
+# are set with `wrangler secret put <NAME>` and never committed.
+[vars]
+AZURE_SPEECH_REGION = "eastasia"
+AZURE_SPEECH_VOICE = "zh-TW-HsiaoChenNeural"
+GOOGLE_CLOUD_PROJECT = "your-gcp-project"
+GOOGLE_CLOUD_LOCATION = "global"
+GEMINI_MODEL = "gemini-2.5-pro"
+
+[placement]
+mode = "smart"
